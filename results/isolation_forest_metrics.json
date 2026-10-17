@@ -1,0 +1,44 @@
+{
+  "model": "isolation_forest",
+  "split": "time",
+  "seed": 42,
+  "drop_duplicates": true,
+  "params": {
+    "n_estimators": 300,
+    "max_samples": 256,
+    "contamination": "auto",
+    "n_jobs": -1
+  },
+  "data": {
+    "train": {
+      "rows": 170235,
+      "fraud": 342,
+      "fraud_pct": 0.2009
+    },
+    "val": {
+      "rows": 56745,
+      "fraud": 57,
+      "fraud_pct": 0.1004
+    },
+    "test": {
+      "rows": 56746,
+      "fraud": 74,
+      "fraud_pct": 0.1304
+    }
+  },
+  "metrics": {
+    "threshold": 0.5940435657556751,
+    "precision": 0.04336043360433604,
+    "recall": 0.21621621621621623,
+    "f1": 0.07223476297968397,
+    "roc_auc": 0.9444589634807026,
+    "pr_auc": 0.03329734317839926,
+    "tp": 16,
+    "fp": 353,
+    "fn": 58,
+    "tn": 56319,
+    "train_time_s": 0.867124700000204,
+    "infer_ms_per_1k": 12.638400944555553,
+    "latency_ms_single": 23.362519000002067
+  }
+}

@@ -1,2 +1,35 @@
-.venv
+# Virtual environments
+.venv/
+venv/
+env/
+
+# Python bytecode & cache
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+
+# IDE & Editor configs
+.vscode/
+.idea/
+*.swp
+
+# OS generated files
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# Environment variables & secrets
+.env
+*.env
+
+# Datasets
 dataset/
+
+# Model weights & binary artifacts (giữ lại code, metrics json và biểu đồ png trong results)
+results/*.joblib
+*.joblib
+*.pkl
+*.pickle
