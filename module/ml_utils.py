@@ -101,6 +101,10 @@ def run_eval(train_fn, train, val, test, features, seed):
     batch_time = time.perf_counter() - t0
 
     # Độ trễ khi suy luận từng giao dịch (giống lúc gọi API).
+    try:
+        model.set_params(n_jobs=1)
+    except ValueError:
+        pass
     n_single = min(100, len(X_te))
     t0 = time.perf_counter()
     for k in range(n_single):
