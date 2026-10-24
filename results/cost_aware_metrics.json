@@ -1,0 +1,811 @@
+{
+  "split": "time",
+  "seed": 42,
+  "assumptions": {
+    "scenarios": {
+      "A (review rẻ)": {
+        "review": 5,
+        "block": 30
+      },
+      "B (cân bằng)": {
+        "review": 10,
+        "block": 50
+      },
+      "C (review đắt)": {
+        "review": 25,
+        "block": 50
+      }
+    },
+    "analyst_recall": 1.0,
+    "capacities": [
+      null,
+      100
+    ],
+    "k_list": [
+      50,
+      100,
+      200,
+      500
+    ]
+  },
+  "data": {
+    "train": [
+      170235,
+      342
+    ],
+    "val": [
+      56745,
+      57
+    ],
+    "test": [
+      56746,
+      74
+    ]
+  },
+  "platt": {
+    "Random Forest": {
+      "coef": 1.1328816660480951,
+      "intercept": -0.1047774117290511
+    },
+    "XGBoost": {
+      "coef": 0.6041322350502014,
+      "intercept": -1.7146217823028564
+    }
+  },
+  "calibration": [
+    {
+      "model": "Random Forest",
+      "giai đoạn": "Trước hiệu chuẩn",
+      "Brier": 0.00041054399597282676,
+      "Log loss": 0.006108617774985005,
+      "p dự đoán TB": 0.0014863935171773375,
+      "tỉ lệ gian lận thực tế": 0.0013040566735981391
+    },
+    {
+      "model": "Random Forest",
+      "giai đoạn": "Sau hiệu chuẩn",
+      "Brier": 0.00040821795186547815,
+      "Log loss": 0.0033865161960929422,
+      "p dự đoán TB": 0.0011682902986088325,
+      "tỉ lệ gian lận thực tế": 0.0013040566735981391
+    },
+    {
+      "model": "XGBoost",
+      "giai đoạn": "Trước hiệu chuẩn",
+      "Brier": 0.0004594393540173769,
+      "Log loss": 0.003442066488787532,
+      "p dự đoán TB": 0.0012212307192385197,
+      "tỉ lệ gian lận thực tế": 0.0013040566735981391
+    },
+    {
+      "model": "XGBoost",
+      "giai đoạn": "Sau hiệu chuẩn",
+      "Brier": 0.0003946317301597446,
+      "Log loss": 0.002631332026794553,
+      "p dự đoán TB": 0.0012170186964794993,
+      "tỉ lệ gian lận thực tế": 0.0013040566735981391
+    }
+  ],
+  "policies": [
+    {
+      "model": "Random Forest",
+      "kịch bản": "A (review rẻ)",
+      "chính sách": "Duyệt hết (không có hệ thống)",
+      "tổng chi phí": 7727.669999999999,
+      "giảm so với duyệt hết (%)": 0.0,
+      "giá trị gian lận chặn được (%)": 0.0,
+      "số review": 0,
+      "số block": 0,
+      "cảnh báo nhầm": 0,
+      "precision cảnh báo": 0.0
+    },
+    {
+      "model": "Random Forest",
+      "kịch bản": "A (review rẻ)",
+      "chính sách": "Nhị phân (ngưỡng F1)",
+      "tổng chi phí": 2848.2700000000004,
+      "giảm so với duyệt hết (%)": 63.14193023252803,
+      "giá trị gian lận chặn được (%)": 65.85943757950326,
+      "số review": 0,
+      "số block": 63,
+      "cảnh báo nhầm": 7,
+      "precision cảnh báo": 0.8888888888888888
+    },
+    {
+      "model": "Random Forest",
+      "kịch bản": "A (review rẻ)",
+      "chính sách": "3 mức (tối ưu chi phí)",
+      "tổng chi phí": 3055.2200000000003,
+      "giảm so với duyệt hết (%)": 60.46389144463984,
+      "giá trị gian lận chặn được (%)": 68.42230581792442,
+      "số review": 123,
+      "số block": 15,
+      "cảnh báo nhầm": 111,
+      "precision cảnh báo": 0.1956521739130435
+    },
+    {
+      "model": "Random Forest",
+      "kịch bản": "A (review rẻ)",
+      "chính sách": "3 mức (tối ưu chi phí), tối đa 100 review",
+      "tổng chi phí": 2940.2200000000003,
+      "giảm so với duyệt hết (%)": 61.952050229888165,
+      "giá trị gian lận chặn được (%)": 68.42230581792442,
+      "số review": 100,
+      "số block": 16,
+      "cảnh báo nhầm": 89,
+      "precision cảnh báo": 0.23275862068965517
+    },
+    {
+      "model": "Random Forest",
+      "kịch bản": "B (cân bằng)",
+      "chính sách": "Duyệt hết (không có hệ thống)",
+      "tổng chi phí": 7727.669999999999,
+      "giảm so với duyệt hết (%)": 0.0,
+      "giá trị gian lận chặn được (%)": 0.0,
+      "số review": 0,
+      "số block": 0,
+      "cảnh báo nhầm": 0,
+      "precision cảnh báo": 0.0
+    },
+    {
+      "model": "Random Forest",
+      "kịch bản": "B (cân bằng)",
+      "chính sách": "Nhị phân (ngưỡng F1)",
+      "tổng chi phí": 2988.2700000000004,
+      "giảm so với duyệt hết (%)": 61.33025866787789,
+      "giá trị gian lận chặn được (%)": 65.85943757950326,
+      "số review": 0,
+      "số block": 63,
+      "cảnh báo nhầm": 7,
+      "precision cảnh báo": 0.8888888888888888
+    },
+    {
+      "model": "Random Forest",
+      "kịch bản": "B (cân bằng)",
+      "chính sách": "3 mức (tối ưu chi phí)",
+      "tổng chi phí": 2972.3999999999996,
+      "giảm so với duyệt hết (%)": 61.53562458024218,
+      "giá trị gian lận chặn được (%)": 68.39409550356059,
+      "số review": 53,
+      "số block": 14,
+      "cảnh báo nhầm": 42,
+      "precision cảnh báo": 0.373134328358209
+    },
+    {
+      "model": "Random Forest",
+      "kịch bản": "B (cân bằng)",
+      "chính sách": "3 mức (tối ưu chi phí), tối đa 100 review",
+      "tổng chi phí": 2972.3999999999996,
+      "giảm so với duyệt hết (%)": 61.53562458024218,
+      "giá trị gian lận chặn được (%)": 68.39409550356059,
+      "số review": 53,
+      "số block": 14,
+      "cảnh báo nhầm": 42,
+      "precision cảnh báo": 0.373134328358209
+    },
+    {
+      "model": "Random Forest",
+      "kịch bản": "C (review đắt)",
+      "chính sách": "Duyệt hết (không có hệ thống)",
+      "tổng chi phí": 7727.669999999999,
+      "giảm so với duyệt hết (%)": 0.0,
+      "giá trị gian lận chặn được (%)": 0.0,
+      "số review": 0,
+      "số block": 0,
+      "cảnh báo nhầm": 0,
+      "precision cảnh báo": 0.0
+    },
+    {
+      "model": "Random Forest",
+      "kịch bản": "C (review đắt)",
+      "chính sách": "Nhị phân (ngưỡng F1)",
+      "tổng chi phí": 2988.2700000000004,
+      "giảm so với duyệt hết (%)": 61.33025866787789,
+      "giá trị gian lận chặn được (%)": 65.85943757950326,
+      "số review": 0,
+      "số block": 63,
+      "cảnh báo nhầm": 7,
+      "precision cảnh báo": 0.8888888888888888
+    },
+    {
+      "model": "Random Forest",
+      "kịch bản": "C (review đắt)",
+      "chính sách": "3 mức (tối ưu chi phí)",
+      "tổng chi phí": 2942.3999999999996,
+      "giảm so với duyệt hết (%)": 61.92383991552435,
+      "giá trị gian lận chặn được (%)": 68.39409550356059,
+      "số review": 20,
+      "số block": 21,
+      "cảnh báo nhầm": 16,
+      "precision cảnh báo": 0.6097560975609756
+    },
+    {
+      "model": "Random Forest",
+      "kịch bản": "C (review đắt)",
+      "chính sách": "3 mức (tối ưu chi phí), tối đa 100 review",
+      "tổng chi phí": 2942.3999999999996,
+      "giảm so với duyệt hết (%)": 61.92383991552435,
+      "giá trị gian lận chặn được (%)": 68.39409550356059,
+      "số review": 20,
+      "số block": 21,
+      "cảnh báo nhầm": 16,
+      "precision cảnh báo": 0.6097560975609756
+    },
+    {
+      "model": "XGBoost",
+      "kịch bản": "A (review rẻ)",
+      "chính sách": "Duyệt hết (không có hệ thống)",
+      "tổng chi phí": 7727.669999999999,
+      "giảm so với duyệt hết (%)": 0.0,
+      "giá trị gian lận chặn được (%)": 0.0,
+      "số review": 0,
+      "số block": 0,
+      "cảnh báo nhầm": 0,
+      "precision cảnh báo": 0.0
+    },
+    {
+      "model": "XGBoost",
+      "kịch bản": "A (review rẻ)",
+      "chính sách": "Nhị phân (ngưỡng F1)",
+      "tổng chi phí": 3784.54,
+      "giảm so với duyệt hết (%)": 51.026117833706664,
+      "giá trị gian lận chặn được (%)": 52.967194510117544,
+      "số review": 0,
+      "số block": 60,
+      "cảnh báo nhầm": 5,
+      "precision cảnh báo": 0.9166666666666666
+    },
+    {
+      "model": "XGBoost",
+      "kịch bản": "A (review rẻ)",
+      "chính sách": "3 mức (tối ưu chi phí)",
+      "tổng chi phí": 2614.21,
+      "giảm so với duyệt hết (%)": 66.17078627839956,
+      "giá trị gian lận chặn được (%)": 68.82359106949443,
+      "số review": 41,
+      "số block": 42,
+      "cảnh báo nhầm": 36,
+      "precision cảnh báo": 0.5662650602409639
+    },
+    {
+      "model": "XGBoost",
+      "kịch bản": "A (review rẻ)",
+      "chính sách": "3 mức (tối ưu chi phí), tối đa 100 review",
+      "tổng chi phí": 2614.21,
+      "giảm so với duyệt hết (%)": 66.17078627839956,
+      "giá trị gian lận chặn được (%)": 68.82359106949443,
+      "số review": 41,
+      "số block": 42,
+      "cảnh báo nhầm": 36,
+      "precision cảnh báo": 0.5662650602409639
+    },
+    {
+      "model": "XGBoost",
+      "kịch bản": "B (cân bằng)",
+      "chính sách": "Duyệt hết (không có hệ thống)",
+      "tổng chi phí": 7727.669999999999,
+      "giảm so với duyệt hết (%)": 0.0,
+      "giá trị gian lận chặn được (%)": 0.0,
+      "số review": 0,
+      "số block": 0,
+      "cảnh báo nhầm": 0,
+      "precision cảnh báo": 0.0
+    },
+    {
+      "model": "XGBoost",
+      "kịch bản": "B (cân bằng)",
+      "chính sách": "Nhị phân (ngưỡng F1)",
+      "tổng chi phí": 3884.54,
+      "giảm so với duyệt hết (%)": 49.73206671609941,
+      "giá trị gian lận chặn được (%)": 52.967194510117544,
+      "số review": 0,
+      "số block": 60,
+      "cảnh báo nhầm": 5,
+      "precision cảnh báo": 0.9166666666666666
+    },
+    {
+      "model": "XGBoost",
+      "kịch bản": "B (cân bằng)",
+      "chính sách": "3 mức (tối ưu chi phí)",
+      "tổng chi phí": 2859.26,
+      "giảm so với duyệt hết (%)": 62.999714014703,
+      "giá trị gian lận chặn được (%)": 65.58781624991751,
+      "số review": 20,
+      "số block": 38,
+      "cảnh báo nhầm": 17,
+      "precision cảnh báo": 0.7068965517241379
+    },
+    {
+      "model": "XGBoost",
+      "kịch bản": "B (cân bằng)",
+      "chính sách": "3 mức (tối ưu chi phí), tối đa 100 review",
+      "tổng chi phí": 2859.26,
+      "giảm so với duyệt hết (%)": 62.999714014703,
+      "giá trị gian lận chặn được (%)": 65.58781624991751,
+      "số review": 20,
+      "số block": 38,
+      "cảnh báo nhầm": 17,
+      "precision cảnh báo": 0.7068965517241379
+    },
+    {
+      "model": "XGBoost",
+      "kịch bản": "C (review đắt)",
+      "chính sách": "Duyệt hết (không có hệ thống)",
+      "tổng chi phí": 7727.669999999999,
+      "giảm so với duyệt hết (%)": 0.0,
+      "giá trị gian lận chặn được (%)": 0.0,
+      "số review": 0,
+      "số block": 0,
+      "cảnh báo nhầm": 0,
+      "precision cảnh báo": 0.0
+    },
+    {
+      "model": "XGBoost",
+      "kịch bản": "C (review đắt)",
+      "chính sách": "Nhị phân (ngưỡng F1)",
+      "tổng chi phí": 3884.54,
+      "giảm so với duyệt hết (%)": 49.73206671609941,
+      "giá trị gian lận chặn được (%)": 52.967194510117544,
+      "số review": 0,
+      "số block": 60,
+      "cảnh báo nhầm": 5,
+      "precision cảnh báo": 0.9166666666666666
+    },
+    {
+      "model": "XGBoost",
+      "kịch bản": "C (review đắt)",
+      "chính sách": "3 mức (tối ưu chi phí)",
+      "tổng chi phí": 2884.26,
+      "giảm so với duyệt hết (%)": 62.676201235301185,
+      "giá trị gian lận chặn được (%)": 65.58781624991751,
+      "số review": 9,
+      "số block": 41,
+      "cảnh báo nhầm": 9,
+      "precision cảnh báo": 0.82
+    },
+    {
+      "model": "XGBoost",
+      "kịch bản": "C (review đắt)",
+      "chính sách": "3 mức (tối ưu chi phí), tối đa 100 review",
+      "tổng chi phí": 2884.26,
+      "giảm so với duyệt hết (%)": 62.676201235301185,
+      "giá trị gian lận chặn được (%)": 65.58781624991751,
+      "số review": 9,
+      "số block": 41,
+      "cảnh báo nhầm": 9,
+      "precision cảnh báo": 0.82
+    }
+  ],
+  "ranking_at_k": [
+    {
+      "model": "Random Forest",
+      "cách xếp": "Xếp theo xác suất",
+      "K": 50,
+      "precision@K": 0.98,
+      "gian lận bắt được": 49,
+      "giá trị gian lận bắt được (%)": 45.78637545340316
+    },
+    {
+      "model": "Random Forest",
+      "cách xếp": "Xếp theo xác suất",
+      "K": 100,
+      "precision@K": 0.59,
+      "gian lận bắt được": 59,
+      "giá trị gian lận bắt được (%)": 69.04979120485217
+    },
+    {
+      "model": "Random Forest",
+      "cách xếp": "Xếp theo xác suất",
+      "K": 200,
+      "precision@K": 0.315,
+      "gian lận bắt được": 63,
+      "giá trị gian lận bắt được (%)": 69.4319244998816
+    },
+    {
+      "model": "Random Forest",
+      "cách xếp": "Xếp theo xác suất",
+      "K": 500,
+      "precision@K": 0.128,
+      "gian lận bắt được": 64,
+      "giá trị gian lận bắt được (%)": 69.59122219245904
+    },
+    {
+      "model": "Random Forest",
+      "cách xếp": "Xếp theo thiệt hại kỳ vọng",
+      "K": 50,
+      "precision@K": 0.42,
+      "gian lận bắt được": 21,
+      "giá trị gian lận bắt được (%)": 68.05725399764741
+    },
+    {
+      "model": "Random Forest",
+      "cách xếp": "Xếp theo thiệt hại kỳ vọng",
+      "K": 100,
+      "precision@K": 0.23,
+      "gian lận bắt được": 23,
+      "giá trị gian lận bắt được (%)": 68.28293651255811
+    },
+    {
+      "model": "Random Forest",
+      "cách xếp": "Xếp theo thiệt hại kỳ vọng",
+      "K": 200,
+      "precision@K": 0.135,
+      "gian lận bắt được": 27,
+      "giá trị gian lận bắt được (%)": 68.57862719293138
+    },
+    {
+      "model": "Random Forest",
+      "cách xếp": "Xếp theo thiệt hại kỳ vọng",
+      "K": 500,
+      "precision@K": 0.06,
+      "gian lận bắt được": 30,
+      "giá trị gian lận bắt được (%)": 76.87608295902905
+    },
+    {
+      "model": "XGBoost",
+      "cách xếp": "Xếp theo xác suất",
+      "K": 50,
+      "precision@K": 0.96,
+      "gian lận bắt được": 48,
+      "giá trị gian lận bắt được (%)": 49.03703186083256
+    },
+    {
+      "model": "XGBoost",
+      "cách xếp": "Xếp theo xác suất",
+      "K": 100,
+      "precision@K": 0.59,
+      "gian lận bắt được": 59,
+      "giá trị gian lận bắt được (%)": 68.97137170712517
+    },
+    {
+      "model": "XGBoost",
+      "cách xếp": "Xếp theo xác suất",
+      "K": 200,
+      "precision@K": 0.3,
+      "gian lận bắt được": 60,
+      "giá trị gian lận bắt được (%)": 69.19640719647707
+    },
+    {
+      "model": "XGBoost",
+      "cách xếp": "Xếp theo xác suất",
+      "K": 500,
+      "precision@K": 0.128,
+      "gian lận bắt được": 64,
+      "giá trị gian lận bắt được (%)": 77.75875522634895
+    },
+    {
+      "model": "XGBoost",
+      "cách xếp": "Xếp theo thiệt hại kỳ vọng",
+      "K": 50,
+      "precision@K": 0.46,
+      "gian lận bắt được": 23,
+      "giá trị gian lận bắt được (%)": 65.33288817974886
+    },
+    {
+      "model": "XGBoost",
+      "cách xếp": "Xếp theo thiệt hại kỳ vọng",
+      "K": 100,
+      "precision@K": 0.28,
+      "gian lận bắt được": 28,
+      "giá trị gian lận bắt được (%)": 68.64203569769411
+    },
+    {
+      "model": "XGBoost",
+      "cách xếp": "Xếp theo thiệt hại kỳ vọng",
+      "K": 200,
+      "precision@K": 0.155,
+      "gian lận bắt được": 31,
+      "giá trị gian lận bắt được (%)": 76.896658371799
+    },
+    {
+      "model": "XGBoost",
+      "cách xếp": "Xếp theo thiệt hại kỳ vọng",
+      "K": 500,
+      "precision@K": 0.102,
+      "gian lận bắt được": 51,
+      "giá trị gian lận bắt được (%)": 77.12298791226853
+    }
+  ],
+  "train_log": [
+    {
+      "model": "Random Forest",
+      "seed": 42,
+      "split": "time",
+      "train_time_s": 35.147536800000125,
+      "best_iteration": null
+    },
+    {
+      "model": "XGBoost",
+      "seed": 42,
+      "split": "time",
+      "train_time_s": 11.173327799999925,
+      "best_iteration": 587
+    },
+    {
+      "model": "Random Forest",
+      "seed": 42,
+      "split": "stratified",
+      "train_time_s": 34.85404339999991,
+      "best_iteration": null
+    },
+    {
+      "model": "XGBoost",
+      "seed": 42,
+      "split": "stratified",
+      "train_time_s": 8.817162399999916,
+      "best_iteration": 374
+    },
+    {
+      "model": "Random Forest",
+      "seed": 43,
+      "split": "stratified",
+      "train_time_s": 35.949416100000235,
+      "best_iteration": null
+    },
+    {
+      "model": "XGBoost",
+      "seed": 43,
+      "split": "stratified",
+      "train_time_s": 6.4833010000002105,
+      "best_iteration": 290
+    },
+    {
+      "model": "Random Forest",
+      "seed": 44,
+      "split": "stratified",
+      "train_time_s": 36.85496340000009,
+      "best_iteration": null
+    },
+    {
+      "model": "XGBoost",
+      "seed": 44,
+      "split": "stratified",
+      "train_time_s": 1.3259110999997574,
+      "best_iteration": 8
+    },
+    {
+      "model": "Random Forest",
+      "seed": 45,
+      "split": "stratified",
+      "train_time_s": 35.39574810000022,
+      "best_iteration": null
+    },
+    {
+      "model": "XGBoost",
+      "seed": 45,
+      "split": "stratified",
+      "train_time_s": 1.5988722000001871,
+      "best_iteration": 15
+    },
+    {
+      "model": "Random Forest",
+      "seed": 46,
+      "split": "stratified",
+      "train_time_s": 31.522621000000072,
+      "best_iteration": null
+    },
+    {
+      "model": "XGBoost",
+      "seed": 46,
+      "split": "stratified",
+      "train_time_s": 6.800983099999939,
+      "best_iteration": 339
+    }
+  ],
+  "multi_seed": {
+    "mean_std": [
+      {
+        "kịch bản": "A (review rẻ)",
+        "chính sách": "Duyệt hết (không có hệ thống)",
+        "model": "Random Forest",
+        "mean": 0.0,
+        "std": 0.0,
+        "mean ± std": "0.0 ± 0.0"
+      },
+      {
+        "kịch bản": "A (review rẻ)",
+        "chính sách": "Nhị phân (ngưỡng F1)",
+        "model": "Random Forest",
+        "mean": 62.9,
+        "std": 14.2,
+        "mean ± std": "62.9 ± 14.2"
+      },
+      {
+        "kịch bản": "A (review rẻ)",
+        "chính sách": "3 mức (tối ưu chi phí)",
+        "model": "Random Forest",
+        "mean": 71.1,
+        "std": 11.1,
+        "mean ± std": "71.1 ± 11.1"
+      },
+      {
+        "kịch bản": "A (review rẻ)",
+        "chính sách": "3 mức (tối ưu chi phí), tối đa 100 review",
+        "model": "Random Forest",
+        "mean": 75.1,
+        "std": 10.8,
+        "mean ± std": "75.1 ± 10.8"
+      },
+      {
+        "kịch bản": "B (cân bằng)",
+        "chính sách": "Duyệt hết (không có hệ thống)",
+        "model": "Random Forest",
+        "mean": 0.0,
+        "std": 0.0,
+        "mean ± std": "0.0 ± 0.0"
+      },
+      {
+        "kịch bản": "B (cân bằng)",
+        "chính sách": "Nhị phân (ngưỡng F1)",
+        "model": "Random Forest",
+        "mean": 61.3,
+        "std": 13.9,
+        "mean ± std": "61.3 ± 13.9"
+      },
+      {
+        "kịch bản": "B (cân bằng)",
+        "chính sách": "3 mức (tối ưu chi phí)",
+        "model": "Random Forest",
+        "mean": 69.8,
+        "std": 12.3,
+        "mean ± std": "69.8 ± 12.3"
+      },
+      {
+        "kịch bản": "B (cân bằng)",
+        "chính sách": "3 mức (tối ưu chi phí), tối đa 100 review",
+        "model": "Random Forest",
+        "mean": 69.9,
+        "std": 11.5,
+        "mean ± std": "69.9 ± 11.5"
+      },
+      {
+        "kịch bản": "C (review đắt)",
+        "chính sách": "Duyệt hết (không có hệ thống)",
+        "model": "Random Forest",
+        "mean": 0.0,
+        "std": 0.0,
+        "mean ± std": "0.0 ± 0.0"
+      },
+      {
+        "kịch bản": "C (review đắt)",
+        "chính sách": "Nhị phân (ngưỡng F1)",
+        "model": "Random Forest",
+        "mean": 61.3,
+        "std": 13.9,
+        "mean ± std": "61.3 ± 13.9"
+      },
+      {
+        "kịch bản": "C (review đắt)",
+        "chính sách": "3 mức (tối ưu chi phí)",
+        "model": "Random Forest",
+        "mean": 69.5,
+        "std": 11.2,
+        "mean ± std": "69.5 ± 11.2"
+      },
+      {
+        "kịch bản": "C (review đắt)",
+        "chính sách": "3 mức (tối ưu chi phí), tối đa 100 review",
+        "model": "Random Forest",
+        "mean": 69.5,
+        "std": 11.2,
+        "mean ± std": "69.5 ± 11.2"
+      },
+      {
+        "kịch bản": "A (review rẻ)",
+        "chính sách": "Duyệt hết (không có hệ thống)",
+        "model": "XGBoost",
+        "mean": 0.0,
+        "std": 0.0,
+        "mean ± std": "0.0 ± 0.0"
+      },
+      {
+        "kịch bản": "A (review rẻ)",
+        "chính sách": "Nhị phân (ngưỡng F1)",
+        "model": "XGBoost",
+        "mean": 68.1,
+        "std": 7.7,
+        "mean ± std": "68.1 ± 7.7"
+      },
+      {
+        "kịch bản": "A (review rẻ)",
+        "chính sách": "3 mức (tối ưu chi phí)",
+        "model": "XGBoost",
+        "mean": 74.7,
+        "std": 9.2,
+        "mean ± std": "74.7 ± 9.2"
+      },
+      {
+        "kịch bản": "A (review rẻ)",
+        "chính sách": "3 mức (tối ưu chi phí), tối đa 100 review",
+        "model": "XGBoost",
+        "mean": 74.8,
+        "std": 9.2,
+        "mean ± std": "74.8 ± 9.2"
+      },
+      {
+        "kịch bản": "B (cân bằng)",
+        "chính sách": "Duyệt hết (không có hệ thống)",
+        "model": "XGBoost",
+        "mean": 0.0,
+        "std": 0.0,
+        "mean ± std": "0.0 ± 0.0"
+      },
+      {
+        "kịch bản": "B (cân bằng)",
+        "chính sách": "Nhị phân (ngưỡng F1)",
+        "model": "XGBoost",
+        "mean": 66.0,
+        "std": 8.8,
+        "mean ± std": "66.0 ± 8.8"
+      },
+      {
+        "kịch bản": "B (cân bằng)",
+        "chính sách": "3 mức (tối ưu chi phí)",
+        "model": "XGBoost",
+        "mean": 73.5,
+        "std": 8.3,
+        "mean ± std": "73.5 ± 8.3"
+      },
+      {
+        "kịch bản": "B (cân bằng)",
+        "chính sách": "3 mức (tối ưu chi phí), tối đa 100 review",
+        "model": "XGBoost",
+        "mean": 73.5,
+        "std": 8.3,
+        "mean ± std": "73.5 ± 8.3"
+      },
+      {
+        "kịch bản": "C (review đắt)",
+        "chính sách": "Duyệt hết (không có hệ thống)",
+        "model": "XGBoost",
+        "mean": 0.0,
+        "std": 0.0,
+        "mean ± std": "0.0 ± 0.0"
+      },
+      {
+        "kịch bản": "C (review đắt)",
+        "chính sách": "Nhị phân (ngưỡng F1)",
+        "model": "XGBoost",
+        "mean": 66.0,
+        "std": 8.8,
+        "mean ± std": "66.0 ± 8.8"
+      },
+      {
+        "kịch bản": "C (review đắt)",
+        "chính sách": "3 mức (tối ưu chi phí)",
+        "model": "XGBoost",
+        "mean": 69.3,
+        "std": 9.6,
+        "mean ± std": "69.3 ± 9.6"
+      },
+      {
+        "kịch bản": "C (review đắt)",
+        "chính sách": "3 mức (tối ưu chi phí), tối đa 100 review",
+        "model": "XGBoost",
+        "mean": 69.3,
+        "std": 9.6,
+        "mean ± std": "69.3 ± 9.6"
+      }
+    ],
+    "paired": [
+      {
+        "kịch bản": "A (review rẻ)",
+        "mean": 3.621500057321536,
+        "std": 3.7341014431052084,
+        "so_seed_XGB_hon": 4
+      },
+      {
+        "kịch bản": "B (cân bằng)",
+        "mean": 3.6799898623641183,
+        "std": 5.972554194993436,
+        "so_seed_XGB_hon": 3
+      },
+      {
+        "kịch bản": "C (review đắt)",
+        "mean": -0.27193952084031137,
+        "std": 8.465781083090134,
+        "so_seed_XGB_hon": 3
+      }
+    ]
+  }
+}
